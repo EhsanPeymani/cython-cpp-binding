@@ -1,0 +1,13 @@
+class PyRectangle:
+    x0: int
+    x1: int
+    y0: int
+    y1: int
+    
+    def __init__(self, x0: int, y0: int, x1: int, y1: int) -> None: ...
+    
+    def get_area(self) -> int: ...
+    
+    def get_size(self) -> tuple[int, int]: ...
+    
+    def move(self, dx: int, dy: int) -> None: ...
