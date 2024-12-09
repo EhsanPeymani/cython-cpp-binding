@@ -40,10 +40,3 @@ setup(
     ext_modules=cythonize(ext_modules),
     python_requires='>=3.6',
 )
-
-
-# build
-# python setup.py build_ext --inplace
-
-# install it
-# pip install -e . 
