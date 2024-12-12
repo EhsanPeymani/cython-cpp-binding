@@ -42,3 +42,25 @@ To compile:
 ```
 python setup.py build_ext --inplace
 ```
+## Printing info in wrappers
+Use the following
+```
+from libc.stdio cimport printf
+printf("Debug: Starting __cinit__ with address %d\n", address)
+```
+
+You can also add extra properties for debugging. For example here, I added `address` just for debugging.
+```
+cdef class PyMyClass:
+    cdef MyClass* _cpp_obj 
+    cdef readonly int address 
+
+    def __cinit__(self, int address):
+        self.address = address
+        try:
+            self._cpp_obj = new MyClass(address)
+            if self._cpp_obj is NULL:
+                raise MemoryError()
+        except Exception as e:
+            raise RuntimeError(f"Failed to create MyClass instance: {e}")
+```
